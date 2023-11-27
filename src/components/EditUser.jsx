@@ -45,7 +45,7 @@ function EditUser() {
         <h1 className="text-3xl font-bold mb-5 ">User's Detail</h1>
         {/* <div className="h-[250px] w-[500px] p-2 grid  md:grid-cols-2 gap-3 mt-3 overflow-y-scroll"> */}
         <div className="h-[450px] gap-[30px] p-2   mt-3 ">
-          <div className="container rounded border   mt-5 bg-slate-200  w-[350px] gap-4 h-[100px] flex  pl-5 pr-5 pt-2 flex-row items-center">
+          <div className="container rounded border   mt-5 bg-slate-200   gap-[20px] h-[100px] flex  pl-5 pr-5 pt-2 flex-row items-center">
             <div>
               <div className="text-2xl font-normal ">{users.username}</div>
               <div>{users.description}</div>
