@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import api from "../api/api";
 
 const EditUserInfo = ({ setShowModal }) => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const EditUserInfo = ({ setShowModal }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/sectors/${userId}`);
+        const response = await fetch(`${api}/sectors/${userId}`);
         const data = await response.json();
 
         // Set the initial state based on the fetched data
@@ -50,7 +51,7 @@ const EditUserInfo = ({ setShowModal }) => {
 
     if (isFormValid) {
       try {
-        await axios.post(`http://localhost:5000/sectors/update/${userId}`, {
+        await axios.post(`${api}/sectors/update/${userId}`, {
           username: user.name,
           description: user.sector,
           agree: user.agree,

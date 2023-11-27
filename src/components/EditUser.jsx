@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import { Edit2, Trash } from "iconsax-react";
-import EnrollModal from "./EnrollModal";
 import EditModal from "./EditModal";
+import api from "../api/api";
 function EditUser() {
   const [users, setUsers] = useState({});
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +14,7 @@ function EditUser() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/sectors/${userId}`);
+        const response = await fetch(` ${api}/sectors/${userId}`);
         const data = await response.json();
 
         setUsers(data);
@@ -27,12 +27,9 @@ function EditUser() {
 
   const handleDelete = async (userId) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/sectors/${userId}`
-      );
+      const response = await axios.delete(` ${api}/sectors/${userId}`);
       //   const data = await response.json();
 
-      console.log("jhgfcv", response.data);
       navigate("/");
     } catch (error) {
       console.error(error);

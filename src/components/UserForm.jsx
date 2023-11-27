@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../api/api";
 
 // import Sector from "./user"; // Update the path accordingly
 
@@ -50,7 +51,7 @@ const UserForm = ({ setShowModal, setUsers }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/allsectors");
+        const response = await axios.get(`${api}/allsectors`);
         setAllSectors(response.data);
       } catch (error) {
         console.error(error);
@@ -68,7 +69,7 @@ const UserForm = ({ setShowModal, setUsers }) => {
       try {
         // Make a POST request to the backend route
         await axios
-          .post("http://localhost:5000/sectors/add", {
+          .post(`${api}/sectors/add`, {
             username: user.name,
             description: user.sector,
             agree: user.agree,
@@ -81,7 +82,7 @@ const UserForm = ({ setShowModal, setUsers }) => {
               setLoadinge(false);
               navigate("/");
 
-              // setUsers((prevUsers) => [...prevUsers, res.data]);
+              setUsers((prevUsers) => [...prevUsers, res.data]);
             }
           });
       } catch (error) {

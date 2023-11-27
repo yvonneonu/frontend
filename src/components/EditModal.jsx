@@ -1,7 +1,6 @@
 import { CloseCircle } from "iconsax-react";
 import { createPortal } from "react-dom";
 import useWindowDimensions from "../hooks/useWindowDimensions";
-import UserForm from "./UserForm";
 import EditUserInfo from "./EditUserInfo";
 
 const EditModal = ({ showModal, setShowModal, setUsers }) => {

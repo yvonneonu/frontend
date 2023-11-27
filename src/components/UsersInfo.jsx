@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import EnrollModal from "./EnrollModal";
+import api from "../api/api";
 
 function UsersInfo() {
   const [users, setUsers] = useState([]);
@@ -9,7 +10,7 @@ function UsersInfo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/sectors");
+        const response = await fetch(`${api}/sectors`);
         const data = await response.json();
 
         setUsers(data);
@@ -20,8 +21,7 @@ function UsersInfo() {
     fetchData();
   }, []);
 
-  console.log("oiuygf");
-
+  console.log("hjgfv", users);
   return (
     <div className="w-full flex justify-center">
       <div className="max-auto h-screen p-10 flex justify-center lg:max-w-[660px] w-full flex-col items-center">
@@ -31,7 +31,7 @@ function UsersInfo() {
           {users.map((user) => (
             <Link
               key={user._id}
-              to={`/user/${user._id}`}
+              to={`/user/${user._id || user.id}`}
               className="container rounded border   mt-5 bg-slate-200 hover:bg-slate-300 cursor-pointer w-[250px] h-[100px] flex  pl-5 pr-5 pt-2 flex-col"
             >
               {console.log("kjihugycf", user._id)}
